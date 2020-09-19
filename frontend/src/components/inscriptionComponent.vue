@@ -49,7 +49,6 @@ export default {
         email: this.form.email,
         password: this.form.password,
       };
-      console.log(user);
       fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
         headers: {
@@ -63,6 +62,8 @@ export default {
           console.log(data);
         })
         .catch((error) => console.log(error));
+         this.$router.push({ name: 'Home' });
+        
     },
     onReset() {
       this.form.email = "";

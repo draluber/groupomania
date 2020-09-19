@@ -9,11 +9,11 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item v-if="!Logged"><router-link to="/inscription" >Inscription</router-link></b-nav-item>
-        <b-nav-item v-if="Logged"><router-link to="/profil" >Admin</router-link></b-nav-item>
-        <b-nav-item v-if="Logged"><router-link to="/profil" >Déconnexion</router-link></b-nav-item>  
+        <b-nav-item v-if="!logged"><router-link to="/inscription" >Inscription</router-link></b-nav-item>
+        <b-nav-item v-if="logged"><router-link to="/profil" >Admin</router-link></b-nav-item>
+        <b-nav-item v-if="logged"><router-link to="/profil" >Déconnexion</router-link></b-nav-item>  
       </b-navbar-nav>
-      <b-navbar-nav class="ml-auto" v-if="Logged">
+      <b-navbar-nav class="ml-auto" v-if="logged">
         <b-nav-item-dropdown right>
            <template v-slot:button-content>
              <em>{{userPseudo}}</em>
@@ -35,14 +35,15 @@ export default {
   name: "App" ,
     data () {
       return {
-        Logged: false,
-        userPseudo: "Olivier",
+        logged: true,
+        userPseudo: "olivier",
       }
     },
     methods: {
       logout (){
         localStorage.clear();
-        this.$router.push('home');
+        this.logged = false;
+        this.$router.push({name : 'Home'});
       }
     }
 }

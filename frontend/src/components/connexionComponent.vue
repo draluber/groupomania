@@ -6,7 +6,7 @@
                     label="Adresse mail :"
                     label-for="input-1">
           <b-form-input id="input-1"
-                        v-model="email"
+                        v-model="form.email"
                         type="email"
                         required
                         placeholder="votre email">
@@ -16,7 +16,7 @@
                     label="mot de passe :"
                     label-for="input-2">
           <b-form-input id="input-2"
-                        v-model="password"
+                        v-model="form.password"
                         type="password"
                         required
                         placeholder="votre mot de passe">
@@ -45,12 +45,12 @@ export default {
  methods: {
    onSubmit(e){
      e.preventDefault()
-     if(this.email == null || this.password == null){
+     if(this.form.email == null || this.form.password == null){
        return false ;  
      }
      let user = {
-       email: this.email,
-       password: this.password,
+       email: this.form.email,
+       password: this.form.password,
      };
      fetch('http://localhost:3000/api/user/login', {
        method: 'POST',

@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const connect = require('./connexion');
-
-const userRoutes = require('./routes/user');
+const db = require('./app/config/db.config.js');
+const userRoutes = require('./routes/utilisateur');
 
 const app = express();
 
